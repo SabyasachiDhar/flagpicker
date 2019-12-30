@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Checkbox  from './checkbox.component';
 
-
 class SelectCountryFlag extends Component {
 
     constructor(props){
@@ -17,7 +16,6 @@ class SelectCountryFlag extends Component {
     handleChange = (e) => {
         const item = e.target.name;
         const isChecked = e.target.checked;
-        const name = e.target.value;
         this.setState(prevState => ({ checkedItems: prevState.checkedItems.set(item, isChecked) ,isChecked:isChecked}));
     }
 
@@ -40,7 +38,7 @@ class SelectCountryFlag extends Component {
                                     this.props.countriesFlags.map((el, index) => {
                                         return(
                                             <span className="dropdown-item" key={index}>
-                                                <Checkbox name={el.flag} value={el.name} checked={this.state.checkedItems.get(el.flag)} onChange={(e)=> {this.handleChange(e); this.props.getSelectedFlag(e, el, this.state.isChecked, el.name)}}/>{el.name}{el.flag}
+                                                <Checkbox name={el.flag} value={el.name} checked={this.state.checkedItems.get(el.flag)} onChange={(e)=> {this.handleChange(e); this.props.getSelectedFlag( el, e.target.checked, el.name)}}/>{el.name}{el.flag}
                                             </span>
                                         )
                                     })
@@ -62,16 +60,14 @@ const mapStateToProps = (state) => {
     return {
         continentName: state.falgPickerMain.continentName,
         countriesFlags: state.falgPickerMain.countriesFlags,
-        countryName: state.falgPickerMain.countryName,
         flagHistory: state.falgPickerMain.flagHistory
     }   
 }
 
 const mapDispatchToProps = (dispatch) => {
     return{
-        getSelectedFlag: (event, flagHistory, isChecked, countryName) => {
-            const isCheck = event.target.checked;
-            dispatch({type: 'GET_SELECTED_FLAG', event, flagHistory, isChecked:isCheck, countryName});
+        getSelectedFlag: (flagHistory, isChecked, countryName) => {
+            dispatch({type: 'GET_SELECTED_FLAG', flagHistory, isChecked, countryName});
         }
     }
   }
