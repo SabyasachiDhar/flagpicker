@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1055317d5518b15405c395588405a7b1",
+    "revision": "138403e1e89450267c1c0765d4d9de43",
     "url": "/flagpicker/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/flagpicker/static/css/2.17e5ed98.chunk.css"
   },
   {
-    "revision": "a9b01e237827077d553b",
+    "revision": "48d5baf088dfa0ec5edd",
     "url": "/flagpicker/static/css/main.9d539c9d.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/flagpicker/static/js/2.5b0b44d5.chunk.js.LICENSE"
   },
   {
-    "revision": "a9b01e237827077d553b",
-    "url": "/flagpicker/static/js/main.b7802f0d.chunk.js"
+    "revision": "48d5baf088dfa0ec5edd",
+    "url": "/flagpicker/static/js/main.d7b8d024.chunk.js"
   },
   {
     "revision": "70789b642248a608fd4f",
