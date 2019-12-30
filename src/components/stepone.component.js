@@ -139,14 +139,12 @@ class AutocompleteContinent extends Component {
 			isActive: false,
 			continentName: ''
 		};
-		
-		console.log("Content Select: ", this.props.continentName);
+
   }
  
   onChange = (event) => {
 		const value = event.target.value;
 		let suggestions = []
-
 		if(value.length > 0) {
 			const regEx = new RegExp(`^${value}`, 'i');
 			suggestions = flagPickerMainData.sort().filter(el => regEx.test(el.continent))
@@ -160,7 +158,6 @@ class AutocompleteContinent extends Component {
 	};
 
 	onFocus = (event) => {
-		console.log(event);
 		this.setState({
 			isActive:  false,
 			suggestions: flagPickerMainData.map(el => el)

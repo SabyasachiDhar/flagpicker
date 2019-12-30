@@ -5,20 +5,20 @@ import Checkbox  from './checkbox.component';
 
 class SelectCountryFlag extends Component {
 
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             isChecked: false,
             checkedItems: new Map()
         }
+        console.log("step 2...",props);
     }
 
     handleChange = (e) => {
-        console.log(e.target);
         const item = e.target.name;
         const isChecked = e.target.checked;
-        this.setState(prevState => ({ checkedItems: prevState.checkedItems.set(item, isChecked) }));
-        console.log("ha", isChecked);
+        const name = e.target.value;
+        this.setState(prevState => ({ checkedItems: prevState.checkedItems.set(item, isChecked) ,isChecked:isChecked}));
     }
 
     render(){
@@ -40,7 +40,7 @@ class SelectCountryFlag extends Component {
                                     this.props.countriesFlags.map((el, index) => {
                                         return(
                                             <span className="dropdown-item" key={index}>
-                                                <Checkbox name={el.flag} checked={this.state.checkedItems.get(el.flag)} onChange={(e)=> {this.handleChange(e); this.props.getSelectedFlag(e, el.flag, this.state.checkedItems.get(el.flag))}}/>{el.name}{el.flag}
+                                                <Checkbox name={el.flag} value={el.name} checked={this.state.checkedItems.get(el.flag)} onChange={(e)=> {this.handleChange(e); this.props.getSelectedFlag(e, el, this.state.isChecked, el.name)}}/>{el.name}{el.flag}
                                             </span>
                                         )
                                     })
@@ -49,14 +49,6 @@ class SelectCountryFlag extends Component {
                             </div>
                             <input type="text" className="form-control" aria-label="Text input with segmented dropdown button" />
                             </div>
-
-
-
-
-
-
-                        
-                            
                         </div>
                     </div>
                     : null
@@ -69,13 +61,18 @@ class SelectCountryFlag extends Component {
 const mapStateToProps = (state) => {
     return {
         continentName: state.falgPickerMain.continentName,
-        countriesFlags: state.falgPickerMain.countriesFlags
+        countriesFlags: state.falgPickerMain.countriesFlags,
+        countryName: state.falgPickerMain.countryName,
+        flagHistory: state.falgPickerMain.flagHistory
     }   
 }
 
 const mapDispatchToProps = (dispatch) => {
     return{
-        getSelectedFlag: (event, flagHistory, isChecked) => dispatch({type: 'GET_SELECTED_FLAG',event, flagHistory, isChecked})
+        getSelectedFlag: (event, flagHistory, isChecked, countryName) => {
+            const isCheck = event.target.checked;
+            dispatch({type: 'GET_SELECTED_FLAG', event, flagHistory, isChecked:isCheck, countryName});
+        }
     }
   }
 

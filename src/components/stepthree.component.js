@@ -13,7 +13,7 @@ class ShowFlag extends Component{
                         <div className="card-body">
                             {
                                 this.props.flagHistory.map((el, index) => {
-                                    return <span key={index}> {el} </span>
+                                    return <span key={index}> {el.flag} </span>
                                 })
                             }
                             <div>
