@@ -188,7 +188,7 @@ class AutocompleteContinent extends Component {
 							return (
 								<li 
 									className="list-group-item" 
-									onClick={() => {this.onClick(el.continent); this.props.getContinentName(el.continent)}} 
+									onClick={() => {this.onClick(el.continent); this.props.getContinentName(el.continent, el.countries)}} 
 									key={index}>{el.continent}
 								</li>
 							)
@@ -201,22 +201,28 @@ class AutocompleteContinent extends Component {
  
   render() {
     return (
-			<div className="col-sm-4">
-				<input className="form-control" 
+		<div className="card">
+			<div className="card-body">
+				<h5 className="card-title">Step 1</h5>
+				<p className="card-text">Select a continent</p>
+				<input className="form-control mb-3" 
 					value={this.state.continentName} 
 					onFocus={this.onFocus} 
 					onChange={e => this.onChange(e)}
 				/>
 				{this.renderedSuggestion()}
 				{
-					this.props.continentName === '' ? 
-					null :
+					this.state.continentName 
+					? 
 					<div>
-						<h5> You selected</h5>
-						<span>{this.props.continentName}</span>
+						<p className="pb-3">You selected</p>
+						<h5> {this.props.continentName}</h5>
 					</div>
+					:
+					null
 				}
 			</div>
+		</div>
     );
   }
 }
@@ -230,7 +236,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return{
-    getContinentName: (continentName) => dispatch({type: 'AUTO_COMPLETE_CONTINENT_SELECT', continentName})
+    getContinentName: (continentName, countriesFlags) => dispatch({type: 'AUTO_COMPLETE_CONTINENT_SELECT', continentName, countriesFlags})
   }
 }
 
