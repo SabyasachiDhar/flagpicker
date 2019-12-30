@@ -24,6 +24,11 @@ code {
 }
 
 .card-cust {
-  min-height: 350px;
+  min-height: 330px;
+}
+
+.check-box-cust {
+  position: relative;
+  top: -2px;
 }
 
