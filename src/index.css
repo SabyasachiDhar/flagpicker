@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.list-cust {
+  position: relative;
+}
+
+.list-group-cust {
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.card-cust {
+  min-height: 350px;
+}
+

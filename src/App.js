@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import FlagPickerData from './assets/data.json';
 import AutocompleteContinent from './components/stepone.component';
 import SelectCountryFlag from './components/steptwo.component';
 import  ShowFlag from './components/stepthree.component'
 
 class App extends Component {
-
-  constructor(){
-    super()
-  }
 
   render(){
     return (

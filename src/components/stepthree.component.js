@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 
 class ShowFlag extends Component{
 
-    constructor(){
-        super()
-    }
-
     render(){
         return(
             <div>

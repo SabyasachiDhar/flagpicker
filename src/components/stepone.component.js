@@ -177,35 +177,36 @@ class AutocompleteContinent extends Component {
 
 	renderedSuggestion () {
 		const { suggestions } = this.state;
-		const { isActive } = this.props
 		if(suggestions === 0){
 			return null;
 		}else {
 			return(
-				<ul className="list-group" >
-					{
-						suggestions.map((el, index) =>{
-							return (
-								<li 
-									className="list-group-item" 
-									onClick={() => {this.onClick(el.continent); this.props.getContinentName(el.continent, el.countries)}} 
-									key={index}>{el.continent}
-								</li>
-							)
-						})
-					}
-				</ul>
+				<div className="list-cust">
+					<ul className="list-group list-group-cust">
+						{
+							suggestions.map((el, index) =>{
+								return (
+									<li 
+										className="list-group-item list-group-item-action" 
+										onClick={() => {this.onClick(el.continent); this.props.getContinentName(el.continent, el.countries)}} 
+										key={index}>{el.continent}
+									</li>
+								)
+							})
+						}
+					</ul>
+				</div>
 			)
 		}
 	}
  
   render() {
     return (
-		<div className="card">
+		<div className="card card-cust">
 			<div className="card-body">
 				<h5 className="card-title">Step 1</h5>
 				<p className="card-text">Select a continent</p>
-				<input className="form-control mb-3" 
+				<input className="form-control" 
 					value={this.state.continentName} 
 					onFocus={this.onFocus} 
 					onChange={e => this.onChange(e)}
@@ -215,7 +216,7 @@ class AutocompleteContinent extends Component {
 					this.state.continentName 
 					? 
 					<div>
-						<p className="pb-3">You selected</p>
+						<p className="pt-5">You selected</p>
 						<h5> {this.props.continentName}</h5>
 					</div>
 					:
